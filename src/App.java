@@ -9,6 +9,7 @@ while (scanner.hasNextInt()) {
     int elem = scanner.nextInt();
     sum += elem;
 
-        System.out.println(sum);
+        
     }
+        System.out.println(sum);
 }
