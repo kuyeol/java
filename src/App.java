@@ -13,4 +13,3 @@ while (scanner.hasNextInt()) {
     }
         System.out.println(sum);
 }
-｝
