@@ -28,6 +28,6 @@ public class App {
                 sum += num;
             }
         } while (num != 0);
-        System.out.println("The sum of the sequence is: " + sum);
+       aa System.out.println("The s3um of the sequence is: " + sum);
     }
 }
