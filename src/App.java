@@ -23,6 +23,7 @@ public class App {
         int sum = 0;
         int num;
         do {
+            ssssss
             num = scanner.nextInt();
             if (num != 0) {
                 sum += num;
