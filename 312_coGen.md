@@ -54,7 +54,7 @@ import io.quarkus.security.identity.SecurityIdentity;
 
  
        
- import io.quarkus.vertx.web.Route;                     
+import io.quarkus.vertx.web.Route;                     
 
 import io.quarkus.vertx.web.RoutingExceptions;         
 
@@ -78,7 +78,43 @@ import java.util.UUID;
 
 
 
-@Authenticated                                         public class UserResource {                                                                                       @Inject                                                SecurityIdentity identity;                                                                                    @Route(path = "/register", methods =               HttpMethod.POST)                                           public Uni<JsonObject>                             registerUser(RoutingContext context) {                         Map<String, Object> params =                   context.getBodyAsJson();                                       String username = (String)                     params.get("username");                                        String password = (String)                     params.get("password");                                        String email = (String)                        params.get("email");                                                                                                  if (username == null || password == null       || email == null) {                                                throw                                      RoutingExceptions.badRequestException("Missing         required fields: username, password, or email.");              }                                                                                                             User user = new User();                                user.username = username;                              user.password = password;                              user.email = email;                                    user.createdAt = Instant.now();                                                                               return user.save().map(savedUser -> {                      Map<String, Object> response = new         HashMap<>();                                                       response.put("user", savedUser);                       return new JsonObject(new                  GsonBuilder().create().toJson(response));                      });                                                }                                                  }   
+
+@Authenticated                                         
+public class UserResource{ 
+                                                                                      
+@Inject                                                
+SecurityIdentity identity;                                                                                    
+
+@Route(path = "/register", methods =               
+
+HttpMethod.POST)                                           
+public Uni<JsonObject>                             registerUser(RoutingContext context) {                        
+
+ Map<String, Object> params =context.getBodyAsJson();                                       
+
+String username = (String)params.get("username");                                        
+
+String password = (String)params.get("password");                                        
+
+String email = (String)params.get("email"); 
+                                                                                                 
+if (username == null || password == null       || email == null{
+                                               
+ throw RoutingExceptions.badRequestException("Missing         required fields: username, password, or email.");             
+
+ }   
+                                                                                                          
+User user = new User();  
+                             
+ user.username = username;
+                              
+user.password = password;
+                             
+ user.email = email;  
+                                 
+ user.createdAt = Instant.now();   
+                                                                            
+return user.save().map(savedUser -> {Map<String, Object> response = new HashMap<>();                                                       response.put("user", savedUser);                       return new JsonObject(new                  GsonBuilder().create().toJson(response));                      });                                                }                                                  }   
 
                                                    
 ```  
