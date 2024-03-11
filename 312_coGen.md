@@ -25,9 +25,7 @@ public class User extends PanacheEntity {
 @Column(unique = true, nullable = false)               
 public String username;                                                                                       
 
-@Password(hashAlgorithm = Password.HashAlgorithm.BCRYPT)
-
-                             
+@Password(hashAlgorithm = Password.HashAlgorithm.BCRYPT)                        
 public String password;                                                                                       
 
 @Column(unique = true, nullable = false)               
