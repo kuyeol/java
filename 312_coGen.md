@@ -1,13 +1,12 @@
 User Account Register:                              * Use the `@RegistrationForm` annotation to            create a REST endpoint for user registration.          * Create a User entity with fields like username,      password, and email.                                   * Validate user input using Bean Validation            annotations.                                           * Hash the user's password using a library like        jBCrypt.                                               * Store the user in a database using Panache ORM       or another persistence library.                        * Send a confirmation email to the user's email        address.                                               1. Bulletin Boards and Replies:                        * Create a Post entity with fields like title,         content, author, and creation time.                    * Use Panache ORM or another persistence library       to store posts in a database.                          * Create a REST endpoint for creating new posts.       * Create a REST endpoint for retrieving all posts      or posts by a specific user.                           * Create a REST endpoint for deleting a post.          * Create a Comment entity with fields like             content, author, and creation time.                    * Use Panache ORM or another persistence library       to store comments in a database.                       * Create a REST endpoint for adding a comment to       a post.                                                * Create a REST endpoint for retrieving all            comments for a specific post.                          1. Minio Storage:                                      * Add the MinIO client library as a dependency.        * Configure the MinIO client with your bucket          name and access/secret keys.                           * Use the MinIO client to upload, download, or         delete files from MinIO storage.                       * Create a REST endpoint for uploading a file to       MinIO storage.                                         * Create a REST endpoint for retrieving a file         from MinIO storage.                                    1. Security with Keycloak:                             * Add the Keycloak client library as a                 dependency.                                            * Configure Keycloak with your realm                   name and access/secret keys.                           * Secure all REST endpoints using Keycloak             authentication.                                        * Create a Keycloak user role for users who can        manage bulletin boards and replies.                    * Assign the Keycloak user role to users who           should have permission to manage bulletin boards       and replies.                                           1. Observe Kafka Messages:                             * Add the Quarkus Kafka client library as a            dependency.                                            * Configure your Kafka broker URL and topic name.      * Create a REST endpoint for sending messages to       Kafka.                                                 * Use the `@Incoming` annotation to create a           message receiver that consumes messages from           Kafka.                                                 * Process incoming messages and update the             bulletin board or reply accordingly.                   1. Discover:                                           * Add the Quarkus SmallRye OpenAPI library as a        dependency.                                            * Configure your OpenAPI documentation with            endpoint descriptions, input/output formats, and       authentication requirements.                           * Use the `@Path` annotation to define REST            endpoints for each feature.                            * Use the `@Produces` and `@Consumes` annotations      to specify the media types that each endpoint          supports.                                                                                                     This is a high-level overview of how you can           implement these features in a Quarkus                  microservice. Each step will require more              detailed implementation, but this should give you      a good starting point.   
 
 
-                                                                                     >> > code create 
-
-
                                         
 
 
-Sure! Here's an example implementation for user       registration using Quarkus and Panache ORM:                                                                   1. Create a User entity with fields like               username, password, and email:
+Sure! Here's an example implementation for user       registration using Quarkus and Panache ORM: 
+
+                                                                  1. Create a User entity with fields like               username, password, and email:
 
 
                          
@@ -23,7 +22,8 @@ import java.time.Instant;
 @Entity                                                
 public class User extends PanacheEntity {                                                                         
 
-@Column(unique = true, nullable = false)               public String username;                                                                                       
+@Column(unique = true, nullable = false)               
+public String username;                                                                                       
 
 @Password(hashAlgorithm = Password.HashAlgorithm.BCRYPT)
 
@@ -34,7 +34,9 @@ public String password;
 public String email;                                                                                          
 
 @Roles({"USER"})                                       
-public Instant createdAt;                          }                                                      
+public Instant createdAt;                         
+
+ }                                                      
 
 ```  
 
