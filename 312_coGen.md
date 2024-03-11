@@ -14,7 +14,19 @@ Sure! Here's an example implementation for user       registration using Quarkus
 ```kotlin                                              
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;                                             
-import io.quarkus.security.jpa.Password;               import io.quarkus.security.jpa.Roles;                                                                         import javax.persistence.Column;                       import javax.persistence.Entity;                       import java.time.Instant;                                                                                     @Entity                                                public class User extends PanacheEntity {                                                                         @Column(unique = true, nullable = false)               public String username;                                                                                       @Password(hashAlgorithm =                          Password.HashAlgorithm.BCRYPT)                             public String password;                                                                                       @Column(unique = true, nullable = false)               public String email;                                                                                          @Roles({"USER"})                                       public Instant createdAt;                          }                                                      ```  
+import io.quarkus.security.jpa.Password;
+
+               
+import io.quarkus.security.jpa.Roles;
+                                                                         
+
+import javax.persistence.Column;                       
+
+import javax.persistence.Entity;                       
+
+import java.time.Instant;                                                                                     
+
+@Entity                                                public class User extends PanacheEntity {                                                                         @Column(unique = true, nullable = false)               public String username;                                                                                       @Password(hashAlgorithm =                          Password.HashAlgorithm.BCRYPT)                             public String password;                                                                                       @Column(unique = true, nullable = false)               public String email;                                                                                          @Roles({"USER"})                                       public Instant createdAt;                          }                                                      ```  
 
                                                   2. Create a REST endpoint for user registration        using the `@RegistrationForm` annotation: 
 
