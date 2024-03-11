@@ -4,11 +4,17 @@ User Account Register:                              * Use the `@RegistrationForm
                                                                                      >> > code create 
 
 
-                                        Sure! Here's an example implementation for user       registration using Quarkus and Panache ORM:                                                                   1. Create a User entity with fields like               username, password, and email:
+                                        
+
+
+Sure! Here's an example implementation for user       registration using Quarkus and Panache ORM:                                                                   1. Create a User entity with fields like               username, password, and email:
 
 
                          
-```kotlin                                              import                                                 io.quarkus.hibernate.orm.panache.PanacheEntity;        import io.quarkus.security.jpa.Password;               import io.quarkus.security.jpa.Roles;                                                                         import javax.persistence.Column;                       import javax.persistence.Entity;                       import java.time.Instant;                                                                                     @Entity                                                public class User extends PanacheEntity {                                                                         @Column(unique = true, nullable = false)               public String username;                                                                                       @Password(hashAlgorithm =                          Password.HashAlgorithm.BCRYPT)                             public String password;                                                                                       @Column(unique = true, nullable = false)               public String email;                                                                                          @Roles({"USER"})                                       public Instant createdAt;                          }                                                      ```  
+```kotlin                                              
+
+import io.quarkus.hibernate.orm.panache.PanacheEntity;                                             
+import io.quarkus.security.jpa.Password;               import io.quarkus.security.jpa.Roles;                                                                         import javax.persistence.Column;                       import javax.persistence.Entity;                       import java.time.Instant;                                                                                     @Entity                                                public class User extends PanacheEntity {                                                                         @Column(unique = true, nullable = false)               public String username;                                                                                       @Password(hashAlgorithm =                          Password.HashAlgorithm.BCRYPT)                             public String password;                                                                                       @Column(unique = true, nullable = false)               public String email;                                                                                          @Roles({"USER"})                                       public Instant createdAt;                          }                                                      ```  
 
                                                   2. Create a REST endpoint for user registration        using the `@RegistrationForm` annotation: 
 
