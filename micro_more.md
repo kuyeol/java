@@ -1188,3 +1188,73 @@ which means it requires a database connection.
 You need to configure the database settings in
 your `application.properties` or
 `application.yml` file.
+
+
+
+
+----
+using minio service in front rest api user reqeust
+... "storage size up" spec implement kafka mq write
+Implementing the feature of user requests for          "storage size up" and using a Kafka message queue
+can be achieved by following these steps:              
+1. Setup MinIO service: MinIO is an open-source,
+high-performance distributed object storage
+server that you can use to build private
+cloud-based data lakes. Install it according to
+the instructions on their website                      (https://min.io/download). After installation,
+start the MinIO server and create a bucket where       files will be stored.
+
+2. Create REST API using Spring Boot: To handle
+user requests, you can use Spring Boot which
+provides a convenient way to build web                 applications in Java. You can define an endpoint
+that accepts POST requests for uploading files.        The file size can be validated and the request
+sent to Kafka if it's within limits.                   
+3. Use Apache Kafka: Kafka is a distributed
+streaming platform that lets you publish,              subscribe to, store, and process streams of
+records in real-time. You can install it on your       local machine or use a cloud service like
+Confluent Cloud. After setting up Kafka, you need      to create a topic where requests for storage size
+increase will be sent.
+
+Here is an example of how the REST API endpoint        might look like:
+`` `java
+import org.springframework.web.bind.annotation.*;      import
+org.apache.kafka.clients.producer.Producer;            importorg.apache.kafka.clients.producer.Producer;import org.apache.kafka.clients.producer.KafkaProducer;
+import                                                 org.apache.kafka.clients.producer.ProducerRecord;
+import java.util.Properties;                           
+@RestController                                        public class StorageRequestController {
+    private static final String TOPIC_NAME =
+"storage-increase";                                    
+    @PostMapping("/requestStorage")                        public ResponseEntity
+requestStorage(@RequestParam("size") int size) {
+        if (size > 1024 * 1024 * 5) { //
+Validating if the requested storage size is
+greater than 5MB
+            produceToKafka(String.valueOf(size));
+            return                                     ResponseEntity.ok().body("Request sent to
+increase storage");
+        } else {                                                   return
+ResponseEntity.badRequest().body("Storage size
+cannot be more than 5MB");                                     }
+    }
+                                                           private void produceToKafka(String message) {
+        Properties properties = new Properties();
+        properties.put("bootstrap.servers",            "localhost:9092"); // Replace with your Kafka
+server details
+        properties.put("key.serializer",
+"org.apache.kafka.common.serialization.StringSeria"org.apace.kafka.common.serialization.StringSerializer");
+        properties.put("value.serializer",
+"org.apache.kafka.common.serialization.StringSeria"org.apche.kafka.common.serialization.StringSerializer");
+
+        Producer<String, String> producer = new        KafkaProducer<>(properties);
+        producer.send(new
+ProducerRecord<>(TOPIC_NAME, message));                        producer.close();
+    }                                                  }
+`` `
+This is a very basic example and you might need        to add more error handling or security measures
+according to your requirements. Also note that         the KafkaProducer object should be reused instead
+of creating a new one for each request. You can        use Spring Boot's support for managing resources
+using @Component annotation to do this.
+
+Remember to replace "localhost:9092" with your
+actual Kafka server details and also make sure         that the topic you are publishing to already
+exists in Kafka. If not, create it first.
