@@ -1,37 +1,4 @@
-# 컴퓨터 과학 관련 질문 요약 및 답변"
 
-
-## 나의 메시지:
-d
-
-## ChatGPT의 메시지:
-권한이 없습니다. 설정 페이지에서 액세스 코드를 [입력하세요](/#/auth).
-
-```json
-{
-  "error": true,
-  "msg": "empty access code"
-}
-```
-
-## 나의 메시지:
-hi
-
-## ChatGPT의 메시지:
-권한이 없습니다. 설정 페이지에서 액세스 코드를 [입력하세요](/#/auth).
-
-```json
-{
-  "error": true,
-  "msg": "empty access code"
-}
-```
-
-## 나의 메시지:
-hi
-
-## ChatGPT의 메시지:
-Hello! How can I assist you with your computer science-related queries today? If you have any questions or need help with coding, feel free to ask!
 
 ## 나의 메시지:
 quarkus security account service write
