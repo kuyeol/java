@@ -1,5 +1,5 @@
 
-'''java
+```java
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -26,5 +26,4 @@ public class UserResource {
 
     // Add other endpoints as needed
 }
-
-'''
+```
