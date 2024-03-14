@@ -1,11 +1,10 @@
 # Table of contents
 
-* [Page](README.md)
+* [Welcome!](README.md)
+* [Quick Start](quick-start.md)
 
-## Group 1
+## Reference
 
-* [Page 1](group-1/page-1.md)
-
-***
-
-* [Page 2](page-2.md)
+* [API Reference](reference/api-reference/README.md)
+  * [Pets](reference/api-reference/pets.md)
+  * [Users](reference/api-reference/users.md)
