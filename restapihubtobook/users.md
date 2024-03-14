@@ -68,11 +68,17 @@
 [https://petstore.swagger.io/v2/swagger.json](https://petstore.swagger.io/v2/swagger.json)
 {% endswagger %}
 
-##
-
-##
 
 ## Create a new user
+|   |   |   |
+| - | - | - |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{% swagger src="https://petstore.swagger.io/v2/swagger.json" path="/user1/{username}" method="put" %}
+[https://petstore.swagger.io/v2/swagger.json](https://petstore.swagger.io/v2/swagger.json)
+{% endswagger %}
 
 <mark style="color:green;">`POST`</mark> http://localhost:8080`/users`
 
