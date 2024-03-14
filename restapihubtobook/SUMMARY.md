@@ -3,7 +3,7 @@
 * [Overview](README.md)
 * [Page 2](page-2/README.md)
   * [dsfsdf](page-2/dsfsdf.md)
-  * [Page](page.md)
+  * [Page](page-2)
   * [sdfdfsdsdf](sdfdfsdsdf.md)
     * [Page 1](page-1.md)
 * [Overview](README.md)
