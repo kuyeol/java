@@ -1,6 +1,6 @@
 
 
-'''
+```java
 package org.acme;
 
 import java.nio.charset.StandardCharsets;
@@ -70,4 +70,4 @@ public class VertxResource {
 
 
 }
-'''
+```
