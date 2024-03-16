@@ -1,15 +1,118 @@
 # README
 
+
+
+````plant-uml
+```puml
+@startuml
+
+	Class Stage
+	Class Timeout {
+		+constructor:function(cfg)
+		+timeout:function(ctx)
+		+overdue:function(ctx)
+		+stage: Stage
+	}
+ 	Stage <|-- Timeout
+
+@enduml
+```
+````
+
+Also you c
+
+
+
+```plant-uml
+{% raw %}
+{% uml %}
+@startuml
+
+	Class Stage
+	Class Timeout {
+		+constructor:function(cfg)
+		+timeout:function(ctx)
+		+overdue:function(ctx)
+		+stage: Stage
+	}
+ 	Stage &lt;|-- Timeout
+
+@enduml
+{% enduml %}
+{% endraw %}
+```
+
+
+
+````plant-uml
+```uml
+@startuml
+
+	Class Stage
+	Class Timeout {
+		+constructor:function(cfg)
+		+timeout:function(ctx)
+		+overdue:function(ctx)
+		+stage: Stage
+	}
+ 	Stage <|-- Timeout
+
+@enduml
+```
+````
+
+```plant-uml
+
+
+
+
+
+
+@startuml
+
+Class Stage
+Class Timeout {
+	+constructor:function(cfg)
+	+timeout:function(ctx)
+	+overdue:function(ctx)
+	+stage: Stage
+}
+Stage <|-- Timeout
+@enduml
+
+
+
+
+```
+
+
+
+## API Reference
+
+This is a sample Pet Store Server based on the OpenAPI 3.0 specification.
+
+> A very important note about this API.
+
+{style="note"}
+
+
+
+
+
+
+
+
+
 Dive into the specifics of each API endpoint by checking out our complete documentation.
 
 ## Pets
 
 All the methods associated with `CRUD`ing some pets. Which isn't as weird as it sounds:
 
-* [ ] &#x20;
-* [ ] &#x20;
-* [ ] &#x20;
-* [ ] &#x20;
+* [x] &#x20;
+* [x] &#x20;
+* [x] &#x20;
+* [x] &#x20;
 
 
 
