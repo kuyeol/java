@@ -1,4 +1,4 @@
-```
+```java
 @ApplicationScoped
 public class AccountService {
 
@@ -15,7 +15,7 @@ public class AccountService {
 }
 ```
 3. Modify your `User` entity to include the hashed password:
-```
+```java
 @Entity
 @Table(name = "users")
 public class User {
@@ -33,7 +33,7 @@ public class User {
 }
 ```
 4. Modify your `UserController` to use the `AccountService` for password hashing and verification:
-```
+```java
 @RestController
 @Path("users")
 public class UserController {
@@ -101,7 +101,7 @@ ResponseStatusException(HttpStatus.NOT_FOUND));
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 }
-```
+```java
 5. Finally, you can use the `AccountService` to handle password hashing and verification in your Quarkus
 application. For example, you could use it to hash and verify the password when a user logs in or creates an
 account:
