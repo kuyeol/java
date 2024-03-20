@@ -17,3 +17,8 @@ erDiagram
 
 
 ```
+
+{% @github-files/github-code-block url="https://github.com/kuyeol/java/edit/main/GitBook/group-1/page-1/mixtral.md" %}
+
+```mermaid
+```
