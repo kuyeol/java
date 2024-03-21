@@ -1,11 +1,14 @@
 # Table of contents
 
-* [Page](README.md)
+## main
 
-## Group 1
-
-* [Page 1](group-1/page-1/README.md)
-  * [mixtral](group-1/page-1/mixtral.md)
-  * [algo](group-1/page-1/algo.md)
-  * [codellama](group-1/page-1/codellama.md)
-  * [Page 2](group-1/page-1/page-2.md)
+* [java](README.md)
+  * [mixtral](main/java/mixtral.md)
+  * [algo](main/java/algo.md)
+  * [codellama](main/java/codellama.md)
+  * [Page 2](main/java/page-2.md)
+* [resource](main/resource/README.md)
+  * [mixtral](main/resource/mixtral.md)
+  * [algo](main/resource/algo.md)
+  * [codellama](main/resource/codellama.md)
+  * [Page 2](main/resource/page-2.md)
