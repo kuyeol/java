@@ -1,7 +1,58 @@
 # mixtral
 
-1. Quarkus is a Java framework for building cloud-native applications that run in containers, such as Docker. It's designed to be lightweight, fast, and easy to use, making it well-suited for developing microservices. The code you write using Quarkus can be production-ready, as it provides features like live reloading, hot deployment, and a dev services feature that allows you to easily spin up and test your microservices locally.
-2. For the second part of your question, here's an example of how you could implement user account registration in Quarkus using security password and REST API:
+```
+const message = "hello world"console.log(message);emessage = "hello world"
+```
+
+{% embed url="https://cscircles.cemc.uwaterloo.ca/java_visualize/" fullWidth="true" %}
+
+{% content-ref url="../java/algo.md" %}
+[algo.md](../java/algo.md)
+{% endcontent-ref %}
+
+{% tabs %}
+{% tab title="Python" %}
+```python
+print(messagemessage = hello world"
+```
+{% endtab %}
+
+{% tab title="Ruby" %}
+```ruby
+puts messa
+```
+{% endtab %}
+{% endtabs %}
+
+{% embed url="https://introcs.cs.princeton.edu/java/12types/" fullWidth="true" %}
+
+{% tabs %}
+{% tab title="JavaScript" %}
+```javascript
+const message = "hello world";
+console.log(message);
+```
+{% endtab %}
+
+{% tab title="Python" %}
+```python
+message = "hello world"
+print(message)
+```
+{% endtab %}
+
+{% tab title="Ruby" %}
+```ruby
+message = "hello world"
+puts message
+```
+{% endtab %}
+{% endtabs %}
+
+1.
+2.
+3. Quarkus is a Java framework for building cloud-native applications that run in containers, such as Docker. It's designed to be lightweight, fast, and easy to use, making it well-suited for developing microservices. The code you write using Quarkus can be production-ready, as it provides features like live reloading, hot deployment, and a dev services feature that allows you to easily spin up and test your microservices locally.
+4. For the second part of your question, here's an example of how you could implement user account registration in Quarkus using security password and REST API:
 
 First, let's create the entity for User:
 
