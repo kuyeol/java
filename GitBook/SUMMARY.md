@@ -3,7 +3,7 @@
 * [main](README.md)
   * [java](main/java/README.md)
     * [mixtral](main/java/mixtral/README.md)
-      * [Page 2](main/java/mixtral/page-2.md)
+    * [Page 2](main/java/mixtral/page-2.md)
     * [algo](main/java/algo.md)
     * [codellama](main/java/codellama.md)
   * [resource](main/resource/README.md)
