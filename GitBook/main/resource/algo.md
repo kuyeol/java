@@ -1,4 +1,7 @@
 # algo
+<a href="https://github.com/GitbookIO/gitbook/blob/master/docs/{{ file.path }}" target="_blank" class="btn btn-link pull-right hidden-xs">
+    <i class="octicon octicon-mark-github"></i> Edit on GitHub
+</a>
 
 ```java
 
