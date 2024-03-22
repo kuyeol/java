@@ -14,7 +14,10 @@
 
 {% block page %}
 {{ super() }}
+
 <hr>
+<i class="octicon octicon-mark-github"></i> Edit on GitHub
+</a>
 <div class="btn-group btn-group-justified">
     {% if page.previous and page.previous.path %}
     <a class="btn" href="{{ page.previous.path|resolveFile }}"><b>Previous:</b> {{ page.previous.title }}</a>
