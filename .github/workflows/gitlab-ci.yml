@@ -1,6 +1,7 @@
 # requiring the environment of NodeJS 10
 image: node:10
 
+
 # add 'node_modules' to cache for speeding up builds
 cache:
   paths:
