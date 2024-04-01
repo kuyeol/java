@@ -159,9 +159,7 @@ Authenticator 를 확장하여&#x20;
 
 password 를   추가해봄
 
-{% code title="" overflow="wrap" lineNumbers="true" %}
-```java
-package org.acme.security.webauthn;
+<pre class="language-java" data-title="" data-overflow="wrap" data-line-numbers><code class="lang-java">package org.acme.security.webauthn;
 
 import io.quarkus.hibernate.reactive.panache.PanacheEntity;
 import jakarta.persistence.Entity;
@@ -172,8 +170,8 @@ import io.vertx.ext.auth.webauthn.PublicKeyCredential;
 public class WebAuthCred extends PanacheEntity {
 
 
-    public String password;
-   
+<strong>    public String password;
+</strong>   
      @OneToOne
     public User user;
 
@@ -182,13 +180,12 @@ public class WebAuthCred extends PanacheEntity {
     public WebAuthCred(){}
 
     public WebAuthCred(MyAuthenticator myAuthenticator,User user){
-        password=myAuthenticator.getPassword();
-        fmt=myAuthenticator.getFmt();
+<strong>        password=myAuthenticator.getPassword();
+</strong>        fmt=myAuthenticator.getFmt();
     }
 
 
 }
-```
-{% endcode %}
+</code></pre>
 {% endtab %}
 {% endtabs %}
