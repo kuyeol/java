@@ -16,27 +16,24 @@ extends 사용 시 기존 구현  내용은 제외하고 추가 필드만 작성
 
 
 
-{% code title="" overflow="wrap" lineNumbers="true" %}
-```java
-package org.acme.security.webauthn;
+<pre class="language-java" data-title="" data-overflow="wrap" data-line-numbers><code class="lang-java">package org.acme.security.webauthn;
 
-import io.vertx.ext.auth.webauthn.Authenticator;
-
-public class MyAuthenticator extends Authenticator {
-
-    public String password;
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
+<strong>import io.vertx.ext.auth.webauthn.Authenticator;
+</strong>
+<strong>public class MyAuthenticator extends Authenticator {
+</strong>
+<strong>    public String password;
+</strong><strong>
+</strong><strong>    public String getPassword() {
+</strong><strong>        return password;
+</strong><strong>    }
+</strong>
+<strong>    public void setPassword(String password) {
+</strong><strong>        this.password = password;
+</strong><strong>    }
+</strong>
 }
-```
-{% endcode %}
+</code></pre>
 {% endtab %}
 
 {% tab title="기존 인증 엔터티" %}
