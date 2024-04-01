@@ -9,7 +9,7 @@ extends 사용 시 기존 구현  내용은 제외하고 추가 필드만 작성
 {% endhint %}
 
 {% tabs %}
-{% tab title="extends 클래스" %}
+{% tab title="커스텀 extends 클래스" %}
 기존 인증 엔터티  클래스에서  Athenticator에 구현된   password 필드가 없어
 
 확장하여 작성 해보았다
@@ -173,8 +173,11 @@ import io.vertx.ext.auth.webauthn.PublicKeyCredential;
 
 @Entity
 public class WebAuthCred extends PanacheEntity {
-    public String email;
-    @OneToOne
+
+
+    public String password;
+   
+     @OneToOne
     public User user;
 
     public String fmt;
@@ -182,7 +185,7 @@ public class WebAuthCred extends PanacheEntity {
     public WebAuthCred(){}
 
     public WebAuthCred(MyAuthenticator myAuthenticator,User user){
-        email=myAuthenticator.getPassword();
+        password=myAuthenticator.getPassword();
         fmt=myAuthenticator.getFmt();
     }
 
