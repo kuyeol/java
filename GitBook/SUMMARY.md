@@ -31,6 +31,5 @@
     * [codellama](main/resource/codellama.md)
     * [mixtral](main/resource/mixtral.md)
     * [Page 2](main/resource/page-2.md)
-* [개발일지](undefined/README.md)
 * [개발일지](undefined-1/README.md)
   * [유저서비스 개발](개발일지/undefined/README.md)
