@@ -19,6 +19,7 @@
 <hr>
 
 <div class="btn-group btn-group-justified">
+    <a href="https://github.com/GitbookIO/gitbook/blob/master/docs/{{ file.path }}" target="_blank" class="btn btn-link pull-right hidden-xs">
     {% if page.previous and page.previous.path %}
     <a class="btn" href="{{ page.previous.path|resolveFile }}"><b>Previous:</b> {{ page.previous.title }}</a>
     {% endif %}
