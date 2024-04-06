@@ -1,6 +1,8 @@
 #auth #fillter #map #hash #vaild
 
 해싱알고리즘  로직 확인 코드
+
+<code class="lang-java"> <pre class="language-java" data-title="test.java" data-overflow="wrap" data-line-numbers> 
 ```java
 package org.example;
 import java.nio.charset.StandardCharsets;
@@ -88,3 +90,4 @@ public class PasswordStorageWithSalt {
 }
 
 ```
+</pre></code>
