@@ -1,7 +1,7 @@
 #auth #fillter #map #hash #vaild
 
 해싱알고리즘  로직 확인 코드
-
+```java
 package org.example;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -86,3 +86,5 @@ public class PasswordStorageWithSalt {
     // Method to store the user in the database
 
 }
+
+```
