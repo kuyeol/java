@@ -1,3 +1,8 @@
+
+
+# 하이버네이트 쿼리 샘플
+```
+
 package org.hibernate.shards.query;
 
 import org.hibernate.shards.Shard;
@@ -36,3 +41,5 @@ public class QueryResult {
   }
 
 }
+
+``
