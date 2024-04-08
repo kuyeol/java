@@ -9,6 +9,66 @@
 > 
 > </details>
 
+# Final class 또는 메서드 사용시 주의
+> [!warning]
+>  기본 사양에서 적합하지 않으므로(의도치 않은 이슈 발생 가능성) 코틀린으로 대체하거나 
+> 프로퍼티에 <strong> `quarkus.arc.transform-unproxyable-classes=true` </strong> 추가 한다
+
+> [!WARNING]
+> private 멤버 엑세스 하는 경우 
+> 리플렉션 사용 시 관련되 모든 코드에 명시적 등록해야하고 기본 실행 용량 증가 하므로 지양한다
+
+### 생성자 주입 방식으로 private 엑세스
+@ApplicationScoped 범위 지정
+private 클래스 호출
+생성자를 해당 클래스에 파라미터 하여 전달(private클래스 p) {this.p=p;}
+
+```JAVA
+@ApplicationScoped
+public class CounterBean {
+
+    private CounterService service;
+
+  CounterBean() {
+  }
+    CounterBean(CounterService service) { 
+      this.service = service;
+    }
+}
+```
+
+> 비표준 사양으로
+> '@Inject' 도 경우에 따라 사용 가능 
+```java
+@Singleton // => pseudo-scope
+class AmazingService {
+  String ping() {
+    return "amazing";
+  }
+}
+
+@ApplicationScoped // => normal scope
+class CoolService {
+  String ping() {
+    return "cool";
+  }
+}
+
+@Path("/ping")
+public class PingResource {
+
+  @Inject
+  AmazingService s1; 
+
+  @Inject
+  CoolService s2; 
+
+  @GET
+  public String ping() {
+    return s1.ping() + s2.ping(); 
+  }
+}
+```
 
 
 # BEAN 이란? 
@@ -313,7 +373,56 @@ public class DocumentEditor {
 
 
 
+<details>
+ 
+### CONTEXT & INJECTION
 
+<STRONG><summary> Quarkus reference </summary></STRONG>
+
+#### Discovery
+
+
+
+<details>
+ <summary> 자동으로 스캔하여 인덱싱하는 경우 종속성 추가</summary>
+ 
+```
+<build>
+  <plugins>
+    <plugin>
+      <groupId>io.smallrye</groupId>
+      <artifactId>jandex-maven-plugin</artifactId>
+      <version>3.1.6</version>
+      <executions>
+        <execution>
+          <id>make-index</id>
+          <goals>
+            <goal>jandex</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+```
+</details>
+
+
+
+<details>
+
+<summary> 종속성 추가 없이 인덱싱 </summary>
+
+> 프로퍼티에 추가하여 사용 하기
+> 
+> `quarkus.index-dependency."그룹ID".group-id=org."그룹ID" `
+> 
+
+
+</details>
+
+ 
+</details>
 
 
 
