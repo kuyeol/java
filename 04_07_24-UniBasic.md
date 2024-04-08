@@ -80,6 +80,11 @@ public class Main {
 
 ```JAVA
 
+
+
+
+```JAVA
+
 import java.util.List;
 import static org.example.Main.Country.*;
 import io.smallrye.mutiny.Multi;
@@ -100,19 +105,22 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
+    //static 클래스로 불러오도록 파이널로 수정 방지
     static class TemperatureRecord {
         final Country country;
         final String city;
         final long timestamp;
         final double value;
 
+//생성자 선언 해당 클래스를 참조 할수 있도록 타입으로 사용한다
+//참조 타입선언 [ class, array, interface, Enumeration ]  
         TemperatureRecord(Country country, String city, long timestamp, double value) {
             this.country = country;
             this.city = city;
             this.timestamp = timestamp;
             this.value = value;
         }
-
+//객체 값을 문자열로 표현하여 읽을 수 있도록한다
         @Override
         public String toString() {
             return "TemperatureRecord{" +
@@ -123,17 +131,17 @@ public class Main {
                     '}';
         }
     }
-
+//컨트리 클래스의 상수 정의
     enum Country {
         FRANCE,
         UK,
-        AUSTRALIA
+        AUSTRALI
 
     }
 
     public static void main(String[] args) {
         System.out.println("⚡️ Multi split operator");
-
+//임의 데이터 로드
         var data = List.of(
                 new TemperatureRecord(FRANCE, "Tassin-La-Demi-Lune", System.nanoTime(), 28.0),
                 new TemperatureRecord(FRANCE, "Clermont-Ferrand", System.nanoTime(), 27.0),
@@ -145,10 +153,10 @@ public class Main {
                 new TemperatureRecord(UK, "Newcastle", System.nanoTime(), 13.0),
                 new TemperatureRecord(AUSTRALIA, "Coogee", System.nanoTime(), 16.0),
                 new TemperatureRecord(UK, "Bexhill", System.nanoTime(), 22.0));
-
+//스플리터 정의 = createfrom data spilt contryclass -> conutry (split data )
         var splitter = Multi.createFrom().iterable(data)
                 .split(Country.class, record -> record.country);
-
+//스플리메서드 사용 컨트리 클래스 상수프랑스 구독 에외 처리와 완료시 메세지 출력 .with 내부 프린트에서 record가 출력하는 내용은 get에서 구독한 객체를 iterable(data) 반복하여 출력
         splitter.get(FRANCE)
                 .subscribe().with(
                         record -> System.out.println("🇫🇷 => " + record),
@@ -169,6 +177,7 @@ public class Main {
     }
 }
 ```
+
 
 
 
