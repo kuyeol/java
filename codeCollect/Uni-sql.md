@@ -28,20 +28,31 @@ public class Fruit {
         this.id = id;
         this.name = name;
     }
-
+//클라이언트 파라미터 전달 메서드
     public static Uni<List<Fruit>> findAll(PgPool client) {
-        return client.query("SELECT id, name FROM fruits ORDER BY name ASC").execute()
-                .onItem().transform(pgRowSet -> {
+        //클라이런트 호출
+        return client
+        //쿼리메소드 호출 쿼리문 파라미터 전달 
+        .query("SELECT id, name FROM fruits ORDER BY name ASC")
+        //실행 
+        .execute()
+        // 아이템 호출 함수  
+        .onItem()
+        // 폼전달   파라미터를 row셋으로  
+        .transform(pgRowSet -> {
+            //리스트 생성 과 리스트 사이즈 계산
                     List<Fruit> list = new ArrayList<>(pgRowSet.size());
+                    //로우 셋 리스트 로우 만큼 반복을 add from row 반환 리스트 
                     for (Row row : pgRowSet) {
                         list.add(from(row));
-                    }
-                    return list;
-                });
+                           return list;
+                 }
+             );
     }
 
     public static Uni<Fruit> findById(PgPool client, Long id) {
-        return client.preparedQuery("SELECT id, name FROM fruits WHERE id = $1").execute(Tuple.of(id))
+        return client.preparedQuery("SELECT id, name FROM fruits WHERE id = $1")
+        .execute(Tuple.of(id))
                 .onItem().transform(RowSet::iterator)
                 .onItem().transform(iterator -> iterator.hasNext() ? from(iterator.next()) : null);
     }
