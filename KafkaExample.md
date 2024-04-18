@@ -1,3 +1,6 @@
+# 카프카 암호화 scram
+
+```java
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -81,3 +84,5 @@ public class KafkaExample {
         c.consume();
     }
 }
+
+```
