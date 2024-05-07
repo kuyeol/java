@@ -14,4 +14,19 @@
 ```
 
 
+
+## 카프카 이벤트 스트림 콘솔 테스팅
+```
+bin/windows/kafka-console-consumer.bat --topic wordcount-output --from-beginning --bootstrap-server localhost:9092  --property print.key=true
+
+bin/windows/kafka-topics.bat --create --topic quickstart-events --bootstrap-server localhost:9092
+
+bin/windows/kafka-topics.bat --describe --topic quickstart-events --bootstrap-server localhost:9092
+
+bin/windows/kafka-console-producer.bat --topic quickstart-events --bootstrap-server localhost:9092
+
+bin/windows/kafka-console-consumer.bat --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
+
+```
+
 ### 에러나면 에러메세지 경로 확인해보자!
