@@ -1,6 +1,6 @@
 # Windows Env 
 
-kafka 실행 Script
+## kafka 실행 Script
 
 > 카프카 위치 경로 확인 후 해당경로에 실행되도록 이동 또는 경로 지정 
 > 주키퍼 카프카 순으로 실행
@@ -12,3 +12,6 @@ kafka 실행 Script
 .\bin\windows\kafka-server-start.bat .\config\server.properties
 
 ```
+
+
+### 에러나면 에러메세지 경로 확인해보자!
