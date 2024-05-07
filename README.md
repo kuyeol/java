@@ -1,4 +1,5 @@
 # Windows Env 
+### 에러나면 에러메세지 출려된 경로 먼저 확인해보자!
 
 ## kafka 실행 Script
 
@@ -29,4 +30,4 @@ bin/windows/kafka-console-consumer.bat --topic quickstart-events --from-beginnin
 
 ```
 
-### 에러나면 에러메세지 경로 확인해보자!
+
