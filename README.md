@@ -2,6 +2,10 @@
 
 이슈 확인 하기~!
 
+# java 참고 서적
+java precisely
+java:the complete reference
+이펙티브자바
 
 
 
