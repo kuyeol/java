@@ -29,7 +29,7 @@ java:the complete reference
 <details>
  <summary> <h3> 멀티파트 파일 업로드 코드 참고  </h3> </summary> 
 
-  ```java
+
 KimJohn Quinn님의 프로필 사진
 KimJohn Quinn
 읽지 않음,
@@ -51,7 +51,8 @@ The RESTClient will not generate the multipart signature/payload when the multip
 I am confused about the dependencies, we have standardized on a reactive approach and not sure what the interaction is between resteasy vs. mutiny vs. the Quarkus rest client, etc.  For a while I had issues with conflicting reactive vs. non-reactive when building.
 The relevant code is:
 
-Client Definition:
+Client Definition:  
+```java
 @POST
 @Path("/{client}/package")
 @Consumes(MULTIPART_FORM_DATA)
@@ -81,8 +82,10 @@ public class FilePackage {
 
     public List<FileObject> getPackageFiles() { ... }
 }
+```
 
 Resource Method (note PackageUpload is exactly the same as the FilePackage above - if i only use the simple parameters it marshals from the client to this resource fine - when I uncomment the files or index it fails - the reason I have two payloads, the same, is because of issue #1 above):
+```java
 @POST
 @Path("/{client}/package")
 @Consumes(MULTIPART_FORM_DATA)
@@ -127,6 +130,7 @@ given().pathParam("client", "my-client")
         .then()
         .log().everything(true)
         .statusCode(OK.getStatusCode());
+```
 
 Maven Dependencies:
 <dependency>
@@ -137,7 +141,7 @@ Maven Dependencies:
      <groupId>io.quarkus</groupId>
      <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
  </dependency>
-```
+
 </details>
 
 
