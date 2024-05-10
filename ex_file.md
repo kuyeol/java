@@ -28,7 +28,30 @@ abstract public class CommonResource {
 
 }
 ```
+```JAVA
+   @POST
+    @Path("upload")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response uploadFile(FormData formData) throws Exception {
 
+        if (formData.filename == null || formData.filename.isEmpty()) {
+            return Response.status(Status.BAD_REQUEST).build();
+        }
+
+        if (formData.mimetype == null || formData.mimetype.isEmpty()) {
+            return Response.status(Status.BAD_REQUEST).build();
+        }
+
+        PutObjectResponse putResponse = s3.putObject(buildPutRequest(formData),
+                RequestBody.fromFile(formData.data));
+        if (putResponse != null) {
+            return Response.ok().status(Status.CREATED).build();
+        } else {
+            return Response.serverError().build();
+        }
+    }
+
+```
 
 
 ```java
