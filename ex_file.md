@@ -1,4 +1,54 @@
 ```JAVA
+@Path("/multiupload")
+public class MultiFileUploadResource {
+    @Inject
+    MinioService minioService;
+
+    private static final Logger LOGGER = Logger.getLogger("ListenerBean");
+
+    @POST
+    @Path("/files")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response handleFileUploadForm(@MultipartForm MultipartFormDataInput input) {
+        Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
+        List<String> fileNames = new ArrayList<>();
+        List<InputPart> inputParts = uploadForm.get("file");
+        LOGGER.info("inputParts size: " + inputParts.size());
+        String fileName = null;
+
+        for (InputPart inputPart : inputParts) {
+            try {
+                MultivaluedMap<String, String> header = inputPart.getHeaders();
+                fileName = getFileName(header);
+                fileNames.add(fileName);
+                LOGGER.info("File Name: " + fileName);
+                InputStream inputStream = inputPart.getBody(InputStream.class, null);
+                byte[] bytes = IOUtils.toByteArray(inputStream);
+                minioService.saveImage(UUID.randomUUID().toString(), new ByteArrayInputStream(bytes));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        String uploadedFileNames = String.join(", ", fileNames);
+        return Response.ok().entity("Files..:" + uploadedFileNames + " upload successfull.").build();
+    }
+
+    private String getFileName(MultivaluedMap<String, String> header) {
+        String[] contentDisposition = header.getFirst("Content-Disposition").split(";");
+        for (String filename : contentDisposition) {
+            if ((filename.trim().startsWith("filename"))) {
+                String[] name = filename.split("=");
+                String finalFileName = name[1].trim().replaceAll("\"", "");
+                return finalFileName;
+            }
+        }
+        return "unknown";
+    }
+}
+```
+
+```JAVA
 package org.acme.s3;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
