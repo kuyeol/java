@@ -2,6 +2,116 @@
 
 이슈 확인 하기~!
 
+
+
+0518
+## Upload jarx
+<details>
+
+```java
+« Asynchronous Returns... | Main | Kafka vs. JMS/MQ--ai... »
+Sending an InputStream to JAX-RS Resource
+A JAX-RS resource accepting a plain InputStream:
+
+
+@Path("uploads")
+public class UploadsResource {
+
+    @POST
+    @Consumes("*/*")
+    public void upload(InputStream stream) throws IOException {
+        //consume input stream
+        System.out.println("Read: " + stream.read());
+
+    }    
+}
+
+...will consume any binary stream (e.g. file upload) of data as:
+
+import java.io.IOException;
+import java.io.InputStream;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import org.junit.Before;
+import org.junit.Test;
+
+public class UploadsResourceIT {
+
+    private WebTarget tut;
+
+    @Before
+    public void init() {
+        Client client = ClientBuilder.newClient();
+        this.tut = client.target("http://localhost:8080/jaxrs-streaming/resources/uploads");
+    }
+
+    @Test
+    public void sendStream() {
+        InputStream stream = //...
+
+        Response response = this.tut.
+                request().
+                post(Entity.entity(stream, MediaType.APPLICATION_OCTET_STREAM));
+        assertThat(response.getStatus(), is(204));
+    }    
+}
+The System Test is a Java SE client and therefore requires a JAX-RS API implementation (in our example: Apache CXF ):
+
+<dependency>
+    <groupId>org.apache.cxf</groupId>
+    <artifactId>cxf-rt-rs-client</artifactId>
+    <version>3.3.1</version>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.apache.cxf</groupId>
+    <artifactId>cxf-rt-rs-extension-providers</artifactId>
+    <version>3.3.1</version>
+    <scope>test</scope>
+</dependency>  
+</dependencies>         
+Project created with javaee8-essentials-archetype, the 3kB ThinWAR was built and deployed with: wad.sh in 2329ms
+
+See you at Web, MicroProfile and Java EE Workshops at Munich Airport, Terminal 2 or Virtual Dedicated Workshops / consulting. Is Munich's airport too far? Learn from home: airhacks.io.
+Posted at 12:46PM Apr 19, 2019 by Adam Bien, Comments[0]  | Views/Hits: 2458
+NEW live, virtual workshops: Persistence Patterns for Serverless Java on AWS, July, 11th, 2024 and Serverless Generative AI with Java on AWS, July, 18th are open for registration. Also via: meetup.com/airhacks
+>500 Java Shorts Daily www.youtube.com/bienadam/shorts
+
+airhacks.fm the podcast: 
+
+You are invited to: airhacks discord server.
+
+Stay in touch: airhacks.news.
+
+COMMENTS:
+
+POST A COMMENT:
+Name:
+ 
+E-Mail:
+ 
+URL:
+ 
+Notify me by email of new comments
+ 
+Remember Information?
+ 
+Your Comment:
+HTML Syntax: NOT allowed
+Please answer this simple math question
+
+3 + 27 = 
+
+ 
+```
+ 
+</details>
 # java 참고 서적
 java precisely
 java:the complete reference
