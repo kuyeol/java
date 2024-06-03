@@ -1,4 +1,9 @@
-'''java
+
+
+
+
+```java
+
 package com.yourcompany.config;
 
 import org.keycloak.OAuth2Constants;
@@ -24,6 +29,7 @@ public class KeycloakAdminConfig {
                 .build();
     }
 }
+
 ```
 
 ```java
@@ -120,7 +126,7 @@ class CreateUserRequest {
 
 Quarkus 애플리케이션을 실행하고, 유저 생성 API를 테스트합니다. 예를 들어, Postman을 사용하여 다음과 같이 요청을 보낼 수 있습니다:
 
-```
+```json
 POST http://localhost:8080/users
 Content-Type: application/json
 
