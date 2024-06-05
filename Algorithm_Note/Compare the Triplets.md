@@ -12,8 +12,9 @@ int bob_score
 두사람의 합계 점수 배열
 List<Integer,Integer> slist = new 
 
-a[i] > b[i] 이면 Alice는 1 점을 얻습니다 .
-if(a[i]>b[i]) return alice_score+=1;
+a[i] > b[i] 이면 Alice는 1 점을 얻습니다[^1] 
+
+[1^]: if(a[i]>b[i]) return alice_score+=1;
 
 a[i] < b[i] 이면 Bob에게 1 점이 부여됩니다 .
 a[i] = b[i] 이면 두 사람 모두 점수를 받지 못합니다.
