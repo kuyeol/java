@@ -5,6 +5,11 @@ Alice의 챌린지 등급은 세 쌍 a = (a[0], a[1], a[2]) 이고 Bob의 도전
 임무는 a[0] 과 b[0] , a[1] 과 b[1] , a[2] 와 b[2] 를 비교하여 비교 지점을 찾는 것입니다 .
 
 ## 필요 객체
+
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+>
+
 앨리스,밥의 점수 합계
 ```java
 int alice_score
