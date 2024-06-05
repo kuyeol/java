@@ -9,8 +9,11 @@ Alice의 챌린지 등급은 세 쌍 a = (a[0], a[1], a[2]) 이고 Bob의 도전
 int alice_score
 int bob_score
 
+두사람의 합계 점수 배열
+List<Integer,Integer> slist = new 
+
 a[i] > b[i] 이면 Alice는 1 점을 얻습니다 .
-if(a[i]>b[i]) return 1;
+if(a[i]>b[i]) return alice_score+=1;
 
 a[i] < b[i] 이면 Bob에게 1 점이 부여됩니다 .
 a[i] = b[i] 이면 두 사람 모두 점수를 받지 못합니다.
