@@ -3,7 +3,7 @@ L0GdQIQazPGBgLMBY3EGyy10s64cPWth
 
 
 # 키클록 rest Api 정리
-
+ > https://www.keycloak.org/docs-api/22.0.1/javadocs/org/keycloak/admin/client/resource/UsersResource.html
 ## Update the user
 > ### `PUT`  /admin/realms/{realm}/users/{user-id}
 
