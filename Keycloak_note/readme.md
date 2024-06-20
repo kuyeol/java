@@ -17,7 +17,17 @@ import org.keycloak.representations.idm.UserRepresentation;
 
 ```
 
+유저 객체 생성
 
+```java
+UserRepresentation user = new UserRepresentation();
+        user.setEnabled(true);
+        user.setUsername("tester1");
+        user.setFirstName("First");
+        user.setLastName("Last");
+        user.setEmail("tom+tester1@tdlabs.local");
+        user.setAttributes(Collections.singletonMap("origin", Arrays.asList("demo")));
+```
 
 
 
