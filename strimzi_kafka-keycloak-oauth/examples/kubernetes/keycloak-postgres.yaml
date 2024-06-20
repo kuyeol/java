@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: keycloak
+  labels:
+    app: keycloak
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  - name: https
+    port: 8443
+    targetPort: 8443
+  selector:
+    app: keycloak
+  type: NodePort
+
+---
+
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: keycloak
+  labels:
+    app: keycloak
+spec:
+  containers:
+  - name: keycloak
+    image: quay.io/keycloak/keycloak:19.0.3-legacy
+    args:
+    - "-b 0.0.0.0"
+    - "-Dkeycloak.profile.feature.upload_scripts=enabled"
+    env:
+    - name: KEYCLOAK_USER
+      value: admin
+    - name: KEYCLOAK_PASSWORD
+      value: admin
+    - name: KEYCLOAK_IMPORT
+      value: /tmp/realms/kafka-authz-realm.json,/tmp/realms/demo-realm.json
+    - name: PROXY_ADDRESS_FORWARDING
+      value: "true"
+    - name: KEYCLOAK_LOGLEVEL
+      value: INFO
+    - name: DB_ADDR
+      value: postgres.myproject.svc.cluster.local:5432
+    - name: DB_DATABASE
+      value: keycloak
+    - name: DB_USER
+      value: kcuser
+    - name: DB_PASSWORD
+      value: kcuserpass
+    ports:
+    - name: http
+      containerPort: 8080
+    - name: https
+      containerPort: 8443
+    readinessProbe:
+      httpGet:
+        path: /auth/realms/master
+        port: 8080
+    volumeMounts:
+      - name: realms
+        mountPath: /tmp/realms
+  volumes:
+    - name: realms
+      configMap:
+        name: realms

@@ -1,0 +1,64 @@
+dist: jammy
+sudo: required
+language: java
+jobs:
+  include:
+  - os: linux
+    arch: s390x
+    jdk: openjdk17
+    addons:
+      hosts:
+        - kafka
+        - keycloak
+        - hydra
+        - hydra-jwt
+        - mockoauth
+        - kerberos
+      apt:
+        packages:
+        - maven
+    env:
+      - DOCKER_COMPOSE_VERSION=v2.24.5
+    before_install:
+      - sudo rm /usr/local/bin/docker-compose
+      - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+      - chmod +x docker-compose
+      - sudo mv docker-compose /usr/local/bin
+      - export JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-s390x
+      - export PATH=$JAVA_HOME/bin:$PATH
+  - os: linux
+    arch: ppc64le
+    jdk: openjdk17
+    addons:
+      hosts:
+        - kafka
+        - keycloak
+        - hydra
+        - hydra-jwt
+        - mockoauth
+        - kerberos
+      apt:
+        packages:
+        - maven
+jdk:
+- openjdk11
+- openjdk17
+- openjdk8
+cache:
+  directories:
+  - "$HOME/.m2"
+addons:
+  hosts:
+  - kafka
+  - keycloak
+  - hydra
+  - hydra-jwt
+  - mockoauth
+  - kerberos
+env:
+  global:
+  - PULL_REQUEST=${TRAVIS_PULL_REQUEST}
+  - TAG=${TRAVIS_TAG:-latest}
+  - BRANCH=${TRAVIS_BRANCH:-main}
+script:
+- "./.travis/build.sh"
