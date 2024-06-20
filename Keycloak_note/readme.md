@@ -28,7 +28,19 @@ UserRepresentation user = new UserRepresentation();
         user.setEmail("tom+tester1@tdlabs.local");
         user.setAttributes(Collections.singletonMap("origin", Arrays.asList("demo")));
 ```
+유저객체 전달
+```java
+RealmResource realmResource = keycloak.realm(realm);
+        UsersResource usersRessource = realmResource.users();
 
+        // Create user (requires manage-users role)
+        Response response = usersRessource.create(user);
+        System.out.printf("Repsonse: %s %s%n", response.getStatus(), response.getStatusInfo());
+        System.out.println(response.getLocation());
+        String userId = CreatedResponseUtil.getCreatedId(response);
+
+        System.out.printf("User created with userId: %s%n", userId);
+```
 
 
 
