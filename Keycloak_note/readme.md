@@ -1,5 +1,26 @@
 L0GdQIQazPGBgLMBY3EGyy10s64cPWth
 
+유저 생성
+임포트 클래스
+```java
+import org.keycloak.OAuth2Constants;
+import org.keycloak.admin.client.CreatedResponseUtil;
+import org.keycloak.admin.client.Keycloak;
+import org.keycloak.admin.client.KeycloakBuilder;
+import org.keycloak.admin.client.resource.RealmResource;
+import org.keycloak.admin.client.resource.UserResource;
+import org.keycloak.admin.client.resource.UsersResource;
+import org.keycloak.representations.idm.ClientRepresentation;
+import org.keycloak.representations.idm.CredentialRepresentation;
+import org.keycloak.representations.idm.RoleRepresentation;
+import org.keycloak.representations.idm.UserRepresentation;
+
+```
+
+
+
+
+
 
 
 # 키클록 rest Api 정리
