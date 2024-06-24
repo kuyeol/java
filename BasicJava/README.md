@@ -1,7 +1,6 @@
 https://quarkus.io/guides/rest-client#customizing-the-objectmapper-in-rest-client-jackson
 https://quarkus.io/guides/security-keycloak-admin-client
-![img.png](img.png)
-
+![alt text](image.png)
 
 
 ```java
