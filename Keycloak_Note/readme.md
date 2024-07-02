@@ -1,5 +1,10 @@
 L0GdQIQazPGBgLMBY3EGyy10s64cPWth
 
+# Api 참고
+https://dev.to/silentrobi/keycloak-custom-rest-api-search-by-user-attribute-keycloak-3a8c
+
+
+
 유저 생성
 임포트 클래스
 ```java
