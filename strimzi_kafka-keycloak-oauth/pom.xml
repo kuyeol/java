@@ -104,7 +104,7 @@
         <spotbugs.version>4.7.3</spotbugs.version>
         <sonatype.nexus.staging>1.6.3</sonatype.nexus.staging>
         <kafka.version>3.9.1</kafka.version>
-        <jackson.version>2.15.3</jackson.version>
+        <jackson.version>2.18.6</jackson.version>
         <jackson.databind.version>2.15.3</jackson.databind.version>
         <jsonpath.version>2.9.0</jsonpath.version>
         <junit.version>4.13.2</junit.version>
